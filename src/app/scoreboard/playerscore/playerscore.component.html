@@ -21,8 +21,8 @@
     </div>
     <div class="playername-container" [class]="side">
       <div class="playername-text"
-      [ngStyle]="{ fontSize: player.name.length > 13 ? '16px' : '18px', transform: player.name.length > 13 && side === 'right' ? 'translateX(-8px)' : 'translateX(0px)' }"
-      >{{ player.name }}</div>
+      [ngStyle]="{ fontSize: getPlayerDisplayName(player).length > 13 ? '16px' : '18px', transform: getPlayerDisplayName(player).length > 13 && side === 'right' ? 'translateX(-8px)' : 'translateX(0px)' }"
+      >{{ getPlayerDisplayName(player) }}</div>
     </div>
   </div>
   <div class="resources-container">

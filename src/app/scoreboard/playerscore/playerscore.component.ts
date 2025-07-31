@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { AgentNameService } from "../../services/agentName.service";
 import { AgentRoleService } from "../../services/agentRole.service";
+import { NameMapService } from "../../services/playerName.service";
 
 @Component({
   selector: "app-playerscore",
@@ -17,6 +18,8 @@ export class PlayerscoreComponent {
   @Input() hideAuxiliary = false;
   @Input() shiftUltimate = false;
 
+  constructor(private nameMapService: NameMapService) {}
+
   get showAssistCounts() {
     return this.match.teams.findIndex((e: any) => e.hasDuplicateAgents) == -1;
   }
@@ -31,6 +34,10 @@ export class PlayerscoreComponent {
 
   getAgentRole(agent: string): string {
     return AgentRoleService.getAgentRole(agent);
+  }
+
+  public getPlayerDisplayName(player: any): string {
+    return this.nameMapService.getDisplayName(player);
   }
 
   get showAuxScoreboard(): boolean {
